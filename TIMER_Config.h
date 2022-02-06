@@ -1,0 +1,36 @@
+/*
+ * TIMER_Config.h
+ *
+ *  Created on: Nov 6, 2021
+ *      Author: gerges
+ */
+
+#ifndef TIMER_CONFIG_H_
+#define TIMER_CONFIG_H_
+
+/*Timer0 Prescaler options:
+ * 1- TIMER_NO_PRESCALER
+ * 2- TIMER_8_PRESCALER
+ * 3- TIMER_64_PRESCALER
+ * 4- TIMER_256_PRESCALER
+ * 5- TIMER_1024_PRESCALER
+ */
+#define TIMER0_SET_PRESCALER  TIMER_1024_PRESCALER
+
+/*Timer mode options:
+ * 1- TIMER_NORMAL_MODE
+ * 2- TIMER_CTC_MODE
+ * 3- TIMER_PHASE_CORRECT_PWM_MODE
+ * 4- TIMER_FAST_PWM_MODE*/
+
+#define TIMER0_SET_MODE  TIMER_CTC_MODE
+
+/*Timer0 OC0 pin mode options:
+ * 1- TIMER0_OC0_DISCONNECTED
+ * 2- TIMER0_OC0_TOGGLE
+ * 3- TIMER0_OC0_CLR
+ * 4- TIMER0_OC0_SET
+ */
+#define TIMER0_OC0_MODE  TIMER0_OC0_DISCONNECTED
+
+#endif /* TIMER_CONFIG_H_ */
