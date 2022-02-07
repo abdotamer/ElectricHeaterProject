@@ -132,6 +132,7 @@ void __vector_10(void)
 			Readings = 0;
 			ReadingCont = 0;
 		}
+		Timer0Count=0;
 	}
 
 	else
