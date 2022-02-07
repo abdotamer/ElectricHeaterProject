@@ -30,47 +30,47 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-TEST4.lss \
+ElectricHeater.lss \
 
 FLASH_IMAGE += \
-TEST4.hex \
+ElectricHeater.hex \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: TEST4.elf secondary-outputs
+all: ElectricHeater.elf secondary-outputs
 
 # Tool invocations
-TEST4.elf: $(OBJS) $(USER_OBJS)
+ElectricHeater.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,TEST4.map -mmcu=atmega32 -o "TEST4.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-gcc -Wl,-Map,ElectricHeater.map -mmcu=atmega32 -o "ElectricHeater.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-TEST4.lss: TEST4.elf
+ElectricHeater.lss: ElectricHeater.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S TEST4.elf  >"TEST4.lss"
+	-avr-objdump -h -S ElectricHeater.elf  >"ElectricHeater.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-TEST4.hex: TEST4.elf
+ElectricHeater.hex: ElectricHeater.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex TEST4.elf  "TEST4.hex"
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex ElectricHeater.elf  "ElectricHeater.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: TEST4.elf
+sizedummy: ElectricHeater.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega32 TEST4.elf
+	-avr-size --format=avr --mcu=atmega32 ElectricHeater.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) TEST4.elf
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) ElectricHeater.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)

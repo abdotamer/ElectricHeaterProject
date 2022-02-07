@@ -44,6 +44,7 @@ void TIMER0_VidInit(void)
 #else
 #error" TIMER Mode is not valid "
 #endif
+	TIMER0_VidSET_Preload(0); //To reset Count
 }
 void TIMER0_VidSET_Preload(u8 Copy_u8PreloadValue)
 {

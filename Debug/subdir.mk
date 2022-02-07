@@ -9,7 +9,7 @@ C_SRCS += \
 ../EEPROM_program.c \
 ../EXTI_program.c \
 ../GIE_Program.c \
-../System_State.c \
+../System.c \
 ../TIMER_Program.c \
 ../TWI_Program.c \
 ../main.c 
@@ -20,7 +20,7 @@ OBJS += \
 ./EEPROM_program.o \
 ./EXTI_program.o \
 ./GIE_Program.o \
-./System_State.o \
+./System.o \
 ./TIMER_Program.o \
 ./TWI_Program.o \
 ./main.o 
@@ -31,7 +31,7 @@ C_DEPS += \
 ./EEPROM_program.d \
 ./EXTI_program.d \
 ./GIE_Program.d \
-./System_State.d \
+./System.d \
 ./TIMER_Program.d \
 ./TWI_Program.d \
 ./main.d 

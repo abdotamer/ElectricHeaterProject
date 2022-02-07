@@ -5,8 +5,8 @@
  *      Author: user
  */
 
-#ifndef HEATER_PRIVATE_H_
-#define HEATER_PRIVATE_H_
+#ifndef SYSTEM_PRIVATE_H_
+#define SYSTEM_PRIVATE_H_
 
 #define HEATER_OUT      PIN_OUTPUT
 #define HEATER_ON       PIN_HIGH
@@ -16,11 +16,6 @@
 #define Cooler_ON       PIN_HIGH
 #define Cooler_OFF      PIN_LOW
 
-#define SEVEN_SEGMENT_RIGHT_ON    PIN_HIGH
-#define SEVEN_SEGMENT_RIGHT_OFF   PIN_LOW
-
-#define SEVEN_SEGMENT_LEFT_ON    PIN_HIGH
-#define SEVEN_SEGMENT_LEFT_OFF   PIN_LOW
 
 //Timer1 Registers
 #define TCCR1A    *((volatile u8*)0x4F)
@@ -33,4 +28,4 @@
 
 u16 desired_temp;
 u16 MaxSensorReading;
-#endif /* HEATER_PRIVATE_H_ */
+#endif /* SYSTEM_PRIVATE_H_ */

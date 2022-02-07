@@ -13,9 +13,10 @@
 #include"GIE_Interface.h"
 #include"TIMER_Interface.h"
 #include<util/delay.h>
-#include "System_State_Interface.h"
-#include "Heater_Private.h"
-#include "Heater_Config.h"
+
+#include "System_Config.h"
+#include "System_Interface.h"
+#include "System_Private.h"
 #define High 1
 #define Low  0
 
@@ -23,7 +24,7 @@
 u16 Temp = 70;
 u16 AvrgTemp;
 u16 State = NOTHING;
-u16 SystemState = SYSTEM_OFF;
+u16 SystemState = InitialState;
 u8 Flag_1_Sec =0;
 u8 Flag_5_Sec =0;
 
@@ -53,8 +54,8 @@ int main(void)
 			{
 				if(Setting_Mode(&Flag_1_Sec)==1)
 				{
-					Flag_5_Sec = 0;
 					TIMER1_Reset();
+					Flag_5_Sec = 0;
 				}
 			}
 			SystemState = SYSTEM_ON;
@@ -64,7 +65,6 @@ int main(void)
 		default:
 			break;
 		}
-		/**/
 	}
 	return 0;
 
@@ -111,7 +111,7 @@ void __vector_3(void)
 	}
 
 }
-
+//Timer0 CTC ISR
 void __vector_10(void)     __attribute__((signal));
 void __vector_10(void)
 {
@@ -119,8 +119,10 @@ void __vector_10(void)
 	static u16 Readings = 0;
 	static u16 ReadingCont = 0;
 	Timer0Count ++;
+	DIO_SetPinDirection(DIO_PORTA,PIN4,PIN_OUTPUT);
 	if(Timer0Count == 10)
 	{
+		DIO_SetPinValue(DIO_PORTA,PIN4,PIN_HIGH);
 		ReadingCont++;
 		Temp = Current_Temp();
 		Readings += Temp;
@@ -131,9 +133,13 @@ void __vector_10(void)
 			ReadingCont = 0;
 		}
 	}
+
+	else
+		DIO_SetPinValue(DIO_PORTA,PIN4,PIN_LOW);
 /**/
 }
 
+//Timer1 CTC ISR
 void __vector_7(void)     __attribute__((signal));
 void __vector_7(void)
 {

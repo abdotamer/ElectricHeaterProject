@@ -5,23 +5,9 @@
  *      Author: Ahmed Loutfi
  */
 
-#ifndef SYSTEM_STATE_INTERFACE_H_
-#define SYSTEM_STATE_INTERFACE_H_
+#ifndef SYSTEM_INTERFACE_H_
+#define SYSTEM_INTERFACE_H_
 
-
-/*#define OFF 0
-#define ON  1
-#define SET 2
-#define Init_Desired_Temp 60
-#define Num_Of_Temp_Measures 10
-#define Min_Temp 35
-#define Max_Temp 70
-u16 desired_temp;
-u16 CurrentState;
-u16 LOC_u16Digital_Value;
-u8  Loc_u8datareceive;
-u16 LOC_u16Analog_Value;
-u16 current_temperature;*/
 
 //Possible States For Heater
 #define NOTHING 0
@@ -51,4 +37,4 @@ static u8 Timer1Count=0;
 //u8 Flag_1_Sec =0;
 //u8 Flag_5_Sec =0;
 
-#endif /* SYSTEM_STATE_INTERFACE_H_ */
+#endif /* SYSTEM_INTERFACE_H_ */

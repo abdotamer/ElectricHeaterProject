@@ -5,8 +5,12 @@
  *      Author: user
  */
 
-#ifndef HEATER_CONFIG_H_
-#define HEATER_CONFIG_H_
+#ifndef SYSTEM_CONFIG_H_
+#define SYSTEM_CONFIG_H_
+
+/*
+ * Defining System PINS and PORTS
+ */
 
 #define PUSH_BUTTON_SYSTEM_PORT	DIO_PORTB
 #define PUSH_BUTTON_SYSTEM_PIN	PIN2
@@ -44,11 +48,16 @@
 #define LED_PORT		DIO_PORTD
 #define LED_PIN			PIN7
 
-
+/*Initial State options:
+ * 1- SYSTEM_ON
+ * 2- SYSTEM_OFF
+ * 3- SYSTEM_SET
+ */
+#define InitialState SYSTEM_OFF
 
 #define Init_Desired_Temp 60
 #define Num_Of_Temp_Measures 10
 #define Min_Temp 35
 #define Max_Temp 75
 
-#endif /* HEATER_CONFIG_H_ */
+#endif /* SYSTEM_CONFIG_H_ */

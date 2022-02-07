@@ -15,10 +15,11 @@
 #include"TIMER_Interface.h"
 #include"TWI_Interface.h"
 #include"EEPROM_interface.h"
-#include"Heater_Config.h"
-#include "Heater_Private.h"
-#include "System_State_Interface.h"
 #include<util/delay.h>
+
+#include "System_Config.h"
+#include "System_Interface.h"
+#include "System_Private.h"
 
 //u16 CurrentState;
 u8  datareceive;
@@ -30,13 +31,6 @@ void System_Init(void)
 	ADC_Init();
 	Seven_seg_OFF();
 	Seven_seg_Init();
-	//desired_temp = Init_Desired_Temp;
-
-
-	//EEPROM_vidsenddatabyte(0,0,desired_temp);
-
-	/*Set EXTI0 pin as an input and active pull up resistor*/
-	//DIO_SetPinDirection(DIO_PORTD,PIN2,PIN_INPUT);
 
 	//Initialization for cooler & Heater & LEDS & PushButtons
 	DIO_SetPinDirection(COOLER_PORT, COOLER_PIN, PIN_OUTPUT);
@@ -49,9 +43,6 @@ void System_Init(void)
 	DIO_SetPinDirection(PUSH_BUTTON_Cooler_PORT,PUSH_BUTTON_Cooler_PIN,PIN_INPUT);
 	DIO_SetPinDirection(PUSH_BUTTON_Heater_PORT,PUSH_BUTTON_Heater_PIN,PIN_INPUT);
 
-	/*Set  Timer Preload*/
-	//TIMER0_VidSET_Preload(156);
-
 	/*Intialization for EXTI0*/
 	EXTI0_VidInit();
 	EXTI1_VidInit();
@@ -61,6 +52,7 @@ void System_Init(void)
 	TIMER0_VidSET_CTCValue(78); //0.01 Sec -> 16MHz = 156, 8MHz = 78
 	TIMER1_Init();
 	TIMER0_VidInit();
+
 	/*Enable to GIE*/
 	GIE_VidEnable();
 
@@ -206,25 +198,7 @@ void HeaterLamp(u16 Desired_State,u8* Flag)
 	else
 		DIO_SetPinValue(LED_PORT,LED_PIN ,PIN_LOW);
 }
-/*
-void Heating_Mode(u16 desired_temp)
-{
 
-
-	while(current_temperature<desired_temp)
-	{
-		//heating on
-
-		DIO_SetPinValue(LED_HEATER_PORT,LED_HEATER_PIN ,LED_HEATER_ON);
-		_delay_ms(300);
-		DIO_SetPinValue(LED_HEATER_PORT,LED_HEATER_PIN , LED_HEATER_OFF );
-		_delay_ms(300);
-	}
-
-	//heating off
-	DIO_SetPinValue(LED_HEATER_PORT,LED_HEATER_PIN, LED_HEATER_OFF );
-
-}*/
 void Seven_seg_Init(void)
 {
 	DIO_SetPinDirection(SEVEN_SEGMENT_RIGHT_PORT,SEVEN_SEGMENT_RIGHT_PINA,PIN_OUTPUT);

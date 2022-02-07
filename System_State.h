@@ -22,14 +22,14 @@ u16 LOC_u16Digital_Value;
 u8  Loc_u8datareceive;
 u16 LOC_u16Analog_Value;
 u16 current_temperature;*/
-
+/*
 void Setting_Mode(void);
 void Cooling_Mode(u16 desired_temp);
 void Heating_Mode(u16 desired_temp);
 void Seven_seg_Init(void);
 void seven_Seg_Display(u16 Temp);
 void Current_Temp(void);
-
+*/
 
 
 #endif /* SYSTEM_STATE_H_ */
